@@ -7,7 +7,7 @@ var Queue = function() {
 Queue.prototype.enqueue = function (value) {
   for (var key in this) {
     if (key !== 'size' && key !== 'enqueue' && key !== 'dequeue') {
-      keyRenew = Number(key);
+      var keyRenew = Number(key);
       keyRenew++;
       this[keyRenew] = this[key];
     }
