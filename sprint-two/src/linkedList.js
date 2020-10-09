@@ -1,6 +1,22 @@
 /**
- *
+ * @explanation
+ *   If you had an array where you were adding and removing data often,
+ *   it would be ideal to have a linkedList data structure.
+ *   Systems Effects:
+ *    Insertions and deletions are cheaper than with arrays.
+ *    The memory usage will be larger than with an array.
+ *   Behavior:
+ *     Take any data input and store it in a newly created node in the linkedlist structure
  */
+
+/**
+  *  list:
+  *     {
+  *       head: pointer to first Node (initalize as null)
+  *       tail: pointer to last Node (also initalize as null)
+  *     }
+  */
+
 
 var LinkedList = function() {
   var list = {}; // this object holds the linked list: it is an array of Node objects + 2x references
@@ -12,6 +28,16 @@ var LinkedList = function() {
    * @sideEffect modifies the linked list in-place
    */
   list.addToTail = function(value) {
+    // Add a node to the linked list
+    // debugger;
+    var newNode = Node(value);
+    if (this.tail !== null) {
+      this.tail.next = newNode;
+    }
+    this.tail = newNode;
+    if (list.head === null) {
+      list.head = newNode;
+    }
   };
 
   /**
@@ -20,6 +46,10 @@ var LinkedList = function() {
    * @sideEffect modifies the linked list in-place
    */
   list.removeHead = function() {
+    // debugger;
+    var value = this.head.value;
+    this.head = this.head.next;
+    return value;
   };
 
   /**
@@ -27,6 +57,14 @@ var LinkedList = function() {
    * @returns {boolean} returns true if target is in a node in the linked list
    */
   list.contains = function(target) {
+    var node = this.head;
+    while (node !== null) {
+      if (node.value === target) {
+        return true;
+      }
+      node = node.next;
+    }
+    return false;
   };
 
   return list;
