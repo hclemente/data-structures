@@ -17,7 +17,6 @@
   *     }
   */
 
-
 var LinkedList = function() {
   var list = {}; // this object holds the linked list: it is an array of Node objects + 2x references
   list.head = null; // this reference points to the first Node object in the list
