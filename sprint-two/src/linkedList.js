@@ -58,15 +58,19 @@ var LinkedList = function() {
    */
   list.contains = function(target) {
     var node = this.head;
-    while (node !== null) {
+    var checkNode = function(node) {
       if (node.value === target) {
         return true;
       }
-      node = node.next;
-    }
-    return false;
+      if (node.next === null) {
+        return false;
+      }
+      return checkNode(node.next);
+    };
+    return checkNode(node);
   };
 
+  // functional instation pattern!
   return list;
 };
 
