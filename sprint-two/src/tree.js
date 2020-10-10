@@ -55,7 +55,7 @@ treeMethods.contains = function(target) {
  * Complexity: What is the time complexity of the above functions?
  */
 
- /**
+/**
   *   make a new tree w/ some value: var myTree = new Tree(value);
   *   add a child to my tree: myTree.addChild(value);
   */
