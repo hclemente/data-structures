@@ -13,23 +13,23 @@ var BinarySearchTree = function(value) {
  * @param
  */
 BinarySearchTree.prototype.insert = function(value) {
-  if (this.left === null && this.right === null) {
+  if (this.left === null && this.right === null) { // both don't exist
     if (this.value < value) {
       this.right = new BinarySearchTree(value);
     } else if (this.value > value) {
       this.left = new BinarySearchTree(value);
     }
-  } else if (this.left === null) {
+  } else if (this.left === null) { // left doesn't exist, right does
     if (this.value < value) {
       this.left = new BinarySearchTree(value);
-    } else if (this.value > value) {
-      this.left.insert(value);
-    }
-  } else if (this.right === null) {
-    if (this.value < value) {
-      this.right = new BinarySearchTree(value);
     } else if (this.value > value) {
       this.right.insert(value);
+    }
+  } else if (this.right === null) { // left exists, right doesn't
+    if (this.value < value) {
+      this.right = new BinarySearchTree(value);
+    } else if (this.value > value) {
+      this.left.insert(value);
     }
   } else /* both left and right exist */ {
     if (this.value < value) {
@@ -66,7 +66,18 @@ BinarySearchTree.prototype.contains = function(value) {
 /**
  *
  */
-BinarySearchTree.prototype.depthFirstLog = function() {
+BinarySearchTree.prototype.depthFirstLog = function(callback) {
+  // execute calback on value of current BinarySearchTree
+  // access children an execute callback on them
+
+
+  callback(this.value);
+  if (this.left !== null) {
+    this.left.depthFirstLog(callback);
+  }
+  if (this.right !== null) {
+    this.right.depthFirstLog(callback);
+  }
 
 };
 
